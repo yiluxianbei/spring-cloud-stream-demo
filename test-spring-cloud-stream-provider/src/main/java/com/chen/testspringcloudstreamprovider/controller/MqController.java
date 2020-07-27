@@ -11,7 +11,7 @@ public class MqController {
     @Autowired
     private MqService mqService;
     @GetMapping(value = "/mq")
-    public String sendMessage()
+    public boolean sendMessage()
     {
         return mqService.send();
     }
