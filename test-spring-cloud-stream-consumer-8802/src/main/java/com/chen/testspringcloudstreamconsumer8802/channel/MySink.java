@@ -8,21 +8,17 @@ import org.springframework.messaging.SubscribableChannel;
 /**
  * 自定义的消息通道
  */
-public interface MyProcessor {
+public interface MySink {
 
-	/**
-	 * 消息生产者的配置
-	 */
-	String MYOUTPUT = "myoutput";
-
-	@Output("myoutput")
-    MessageChannel myoutput();
-
-	/**
-	 * 消息消费者的配置
-	 */
 	String MYINPUT = "myinput";
+	String MYDELAYDE = "mydelayed";
+	/**
+	 * 自定义的消息通道(消费)，项目启动会在rabbitmq中生成一个Queue
+	 */
+	@Input("myinput")//通道名
+	SubscribableChannel myinput();
 
-	@Input("myinput")
-    SubscribableChannel myinput();
+	//	测试延迟消息
+	@Input("mydelayed")
+	SubscribableChannel mydelayed();
 }

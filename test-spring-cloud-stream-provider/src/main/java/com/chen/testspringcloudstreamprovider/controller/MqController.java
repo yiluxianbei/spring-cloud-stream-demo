@@ -15,4 +15,8 @@ public class MqController {
     {
         return mqService.send();
     }
+    @GetMapping("/mydelayed")
+    public boolean mydelayed(){
+        return mqService.delayed();
+    }
 }
