@@ -11,10 +11,10 @@ public interface MySink {
 	/**
 	 * 自定义的消息通道(消费)，项目启动会在rabbitmq中生成一个Queue
 	 */
-	@Input("myInput")//通道名
+	@Input("myConsumer")//通道名
 	SubscribableChannel myinput();
 
 	//	测试延迟消息
-	@Input("myDelayedInput")
+	@Input("myDelayedConsumer")
 	SubscribableChannel mydelayed();
 }

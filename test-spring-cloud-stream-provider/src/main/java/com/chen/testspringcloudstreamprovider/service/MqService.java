@@ -10,15 +10,15 @@ import java.util.UUID;
 @EnableBinding(MySource.class)
 public class MqService {
     @Autowired
-    private MessageChannel myoutput; // 消息发送管道
+    private MessageChannel myProducer; // 消息发送管道
 
     @Autowired
-    private MessageChannel mydelayed;// 消息发送管道
+    private MessageChannel mydelayedProducer;// 消息发送管道（延时消息）
 
     public boolean send()
     {
         String serial = UUID.randomUUID().toString();
-        boolean send = myoutput.send(MessageBuilder.withPayload(serial).build());
+        boolean send = myProducer.send(MessageBuilder.withPayload(serial).build());
         System.out.println("*****serial: "+serial);
         return send;
     }
@@ -29,6 +29,6 @@ public class MqService {
      */
     public boolean delayed(){
         String serial = UUID.randomUUID().toString();
-        return mydelayed.send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
+        return mydelayedProducer.send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
     }
 }
