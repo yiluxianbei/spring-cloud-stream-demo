@@ -1,6 +1,7 @@
 package com.chen.testspringcloudstreamprovider.service;
 
 import com.chen.testspringcloudstreamprovider.channel.MySource;
+import com.chen.testspringcloudstreamprovider.pojo.PayLoad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.integration.support.MessageBuilder;
@@ -13,13 +14,12 @@ public class MqService {
     private MessageChannel myProducer; // 消息发送管道
 
     @Autowired
-    private MessageChannel mydelayedProducer;// 消息发送管道（延时消息）
+    private MessageChannel myDelayedProducer;// 消息发送管道（延时消息）
 
-    public boolean send()
-    {
-        String serial = UUID.randomUUID().toString();
-        boolean send = myProducer.send(MessageBuilder.withPayload(serial).build());
-        System.out.println("*****serial: "+serial);
+    public boolean send() {
+        PayLoad payLoad = new PayLoad(UUID.randomUUID().toString());
+        boolean send = myProducer.send(MessageBuilder.withPayload(payLoad).build());
+        System.out.println("*****: "+payLoad);
         return send;
     }
 
@@ -29,6 +29,6 @@ public class MqService {
      */
     public boolean delayed(){
         String serial = UUID.randomUUID().toString();
-        return mydelayedProducer.send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
+        return myDelayedProducer.send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
     }
 }

@@ -1,4 +1,4 @@
-package com.chen.testspringcloudstreamconsumer8803;
+package com.chen.testspringcloudstreamconsumer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

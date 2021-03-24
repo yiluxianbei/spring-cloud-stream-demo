@@ -16,7 +16,7 @@ public interface MySource {
 	/*
 	*测试延时消息通道
 	 */
-	@Output("mydelayedProducer")//通道名
+	@Output("myDelayedProducer")//通道名
 	MessageChannel delayed();
 
 }

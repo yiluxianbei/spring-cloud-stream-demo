@@ -1,4 +1,4 @@
-package com.chen.testspringcloudstreamconsumer8802.channel;
+package com.chen.testspringcloudstreamconsumer.channel;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
