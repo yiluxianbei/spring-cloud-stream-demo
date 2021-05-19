@@ -1,9 +1,7 @@
 package com.chen.testspringcloudstreamprovider.channel;
 
-import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.SubscribableChannel;
 
 public interface MySource {
 
@@ -16,7 +14,7 @@ public interface MySource {
 	/*
 	*测试延时消息通道
 	 */
-	@Output("myDelayedProducer")//通道名
-	MessageChannel delayed();
+	@Output("mydelayedProducer")
+	MessageChannel mydelayedProducer();
 
 }

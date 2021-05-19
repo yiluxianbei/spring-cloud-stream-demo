@@ -10,15 +10,14 @@ import org.springframework.messaging.MessageChannel;
 import java.util.UUID;
 @EnableBinding(MySource.class)
 public class MqService {
-    @Autowired
-    private MessageChannel myProducer; // 消息发送管道
 
     @Autowired
-    private MessageChannel myDelayedProducer;// 消息发送管道（延时消息）
+    private MySource mySource;
+
 
     public boolean send() {
         PayLoad payLoad = new PayLoad(UUID.randomUUID().toString());
-        boolean send = myProducer.send(MessageBuilder.withPayload(payLoad).build());
+        boolean send = mySource.myoutput().send(MessageBuilder.withPayload(payLoad).build());
         System.out.println("*****: "+payLoad);
         return send;
     }
@@ -29,6 +28,7 @@ public class MqService {
      */
     public boolean delayed(){
         String serial = UUID.randomUUID().toString();
-        return myDelayedProducer.send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
+        return mySource.mydelayedProducer().send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
     }
+
 }
