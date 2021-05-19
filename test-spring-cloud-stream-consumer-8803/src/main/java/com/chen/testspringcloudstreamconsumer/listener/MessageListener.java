@@ -13,6 +13,7 @@ public class MessageListener {
 	@StreamListener("myConsumer")//这里配置的是要监听的消息通道（消费通道）
 	public void input(Message<PayLoad> message) {
 		System.out.println("获取到消息: "+message.getPayload());
+//		throw new RuntimeException("123");
 	}
 
 	//监听通道消息(测试延时消息)
