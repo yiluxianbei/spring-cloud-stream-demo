@@ -17,7 +17,7 @@ public class MqService {
 
     public boolean send() {
         PayLoad payLoad = new PayLoad(UUID.randomUUID().toString());
-        boolean send = mySource.myoutput().send(MessageBuilder.withPayload(payLoad).build());
+        boolean send = mySource.myProducer().send(MessageBuilder.withPayload(payLoad).build());
         System.out.println("*****: "+payLoad);
         return send;
     }
@@ -28,7 +28,7 @@ public class MqService {
      */
     public boolean delayed(){
         String serial = UUID.randomUUID().toString();
-        return mySource.mydelayedProducer().send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
+        return mySource.myDelayedProducer().send(MessageBuilder.withPayload(serial).setHeader("x-delay",3000).build());
     }
 
 }

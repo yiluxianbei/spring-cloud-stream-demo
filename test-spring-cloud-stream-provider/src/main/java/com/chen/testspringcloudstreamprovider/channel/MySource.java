@@ -10,11 +10,11 @@ public interface MySource {
 	 * 自定义的消息通道（生产）
 	 */
 	@Output("myProducer")//通道名
-    MessageChannel myoutput();
+    MessageChannel myProducer();
 	/*
 	*测试延时消息通道
 	 */
-	@Output("mydelayedProducer")
-	MessageChannel mydelayedProducer();
+	@Output("myDelayedProducer")
+	MessageChannel myDelayedProducer();
 
 }
