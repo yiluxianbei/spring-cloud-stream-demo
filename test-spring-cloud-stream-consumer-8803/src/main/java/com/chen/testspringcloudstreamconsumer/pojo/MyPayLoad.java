@@ -2,13 +2,13 @@ package com.chen.testspringcloudstreamconsumer.pojo;
 
 import java.io.Serializable;
 
-public class PayLoad implements Serializable {
+public class MyPayLoad implements Serializable {
     private String payLoad;
 
-    public PayLoad(){
+    public MyPayLoad(){
 
     }
-    public PayLoad(String payLoad) {
+    public MyPayLoad(String payLoad) {
         this.payLoad = payLoad;
     }
 
@@ -22,7 +22,7 @@ public class PayLoad implements Serializable {
 
     @Override
     public String toString() {
-        return "PayLoad{" +
+        return "MyPayLoad{" +
                 "payLoad='" + payLoad + '\'' +
                 '}';
     }

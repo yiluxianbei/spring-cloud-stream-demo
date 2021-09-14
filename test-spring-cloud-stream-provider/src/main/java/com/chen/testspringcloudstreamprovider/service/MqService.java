@@ -1,11 +1,10 @@
 package com.chen.testspringcloudstreamprovider.service;
 
 import com.chen.testspringcloudstreamprovider.channel.MySource;
-import com.chen.testspringcloudstreamprovider.pojo.PayLoad;
+import com.chen.testspringcloudstreamprovider.pojo.MyPayLoad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.integration.support.MessageBuilder;
-import org.springframework.messaging.MessageChannel;
 
 import java.util.UUID;
 @EnableBinding(MySource.class)
@@ -16,9 +15,9 @@ public class MqService {
 
 
     public boolean send() {
-        PayLoad payLoad = new PayLoad(UUID.randomUUID().toString());
-        boolean send = mySource.myProducer().send(MessageBuilder.withPayload(payLoad).build());
-        System.out.println("*****: "+payLoad);
+        MyPayLoad myPayLoad = new MyPayLoad(UUID.randomUUID().toString());
+        boolean send = mySource.myProducer().send(MessageBuilder.withPayload(myPayLoad).build());
+        System.out.println("*****: "+ myPayLoad);
         return send;
     }
 
